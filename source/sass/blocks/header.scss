@@ -1,3 +1,28 @@
 .header {
-  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+  min-height: 74px;
+  padding: 25px 35px;
+
+  background-color: $color-default-white;
+}
+
+.header__wrapper {
+  display: flex;
+
+  justify-items: flex-start;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+
+  & svg {
+    width: 192px;
+    height: 24px;
+  }
 }

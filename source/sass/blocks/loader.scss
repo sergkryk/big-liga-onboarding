@@ -1,0 +1,108 @@
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 100px 0;
+
+  background-color: $color-default-white;
+  transform-origin: center;
+  visibility: visible;
+
+  transition: transform $default-transition-settings, opacity $default-transition-settings, visibility $default-transition-settings;
+
+  &--hidden {
+    z-index: -100;
+
+    transform: scale(0);
+    visibility: hidden;
+    opacity: 0;
+
+    pointer-events: none;
+  }
+}
+
+.loader__logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+
+  animation: loader-appeared 1s ease;
+}
+
+.loader__logo {
+  max-width: 80%;
+
+  @include viewport--md {
+    max-width: 72%;
+  }
+}
+
+.loader__invite-text {
+  margin-top: auto;
+
+  animation: fade-in-up 0.5s ease 0.8s backwards;
+
+  &--desktop {
+    @include viewport--md {
+      display: none;
+    }
+  }
+
+  &--tablet {
+    display: none;
+
+    @include viewport--md {
+      display: block;
+    }
+  }
+}
+
+.loader__logo-letter {
+  animation: fade-in-down 0.5s ease 0.8s backwards;
+}
+
+@keyframes loader-appeared {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    transform: translateY(300%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    transform: translateY(-300%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

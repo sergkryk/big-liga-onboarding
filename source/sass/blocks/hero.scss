@@ -1,0 +1,141 @@
+.hero {
+  position: relative;
+
+  display: flex;
+  flex-flow: row nowrap;
+  min-height: 100vh;
+  min-height: calc(100 * var(--vh, 1vh));
+  padding: 74px 0;
+
+  h1 {
+    align-self: center;
+    max-width: 8.1ch;
+    margin: 0 40px 0 0;
+
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 100%;
+    font-family: $font-family--neue-machina;
+    color: $color-neon-blue;
+
+    transform: translateX(-150%);
+    opacity: 0;
+
+    transition: transform $modal-transition-settings, opacity $default-transition-settings;
+  }
+
+  &--visible {
+    h1,
+    .hero__description {
+      transform: initial;
+      opacity: 1;
+    }
+  }
+}
+
+.hero__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 100%;
+
+  @include viewport--md {
+    display: none;
+  }
+
+  svg {
+    width: 664px;
+    height: 661px;
+
+    opacity: 0.02;
+
+    stroke: $color-default-black;
+  }
+}
+
+.hero__description {
+  display: flex;
+  flex-grow: 1;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: auto;
+  padding-top: 40px;
+
+  transform: translateX(150%);
+  opacity: 0;
+
+  transition: transform $modal-transition-settings, opacity $default-transition-settings;
+
+  @include viewport--md {
+    position: fixed;
+    top: 0;
+    left: -120%;
+    z-index: 100;
+
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    min-height: calc(100 * var(--vh, 1vh));
+    padding: 0;
+
+    background-color: $color-neon-blue;
+
+    transition: left $modal-transition-settings;
+
+    &.active {
+      left: 0;
+    }
+  }
+}
+
+.hero__image-container {
+  margin-bottom: 35px;
+
+  .neon-blue {
+    fill: $color-neon-blue;
+
+    @include viewport--md {
+      fill: $color-default-white;
+    }
+  }
+
+  .vivid-violet {
+    fill: $color-vivid-violet;
+
+    @include viewport--md {
+      fill: $color-default-white;
+    }
+  }
+
+  .torch-red {
+    fill: $color-torch-red;
+
+    @include viewport--md {
+      fill: $color-default-white;
+    }
+  }
+}
+
+.hero__content {
+  p {
+    max-width: 16ch;
+    margin: 0;
+
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 133%;
+    font-family: $font-family--neue-machina;
+    color: $color-default-black;
+
+    @include viewport--md {
+      color: $color-default-white;
+    }
+  }
+}
